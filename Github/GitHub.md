@@ -105,6 +105,34 @@ git clone 仓库地址
 git push
 ```
 
-上传成功：
+## Git本地与远程仓库同步操作
 
-![image-20201006191757199](https://raw.githubusercontent.com/Codemilk/LearnNotes/main/Pic/20201006191757.png)
+### 将本地仓库的远程分支更新成远程仓库的最新状态
+
+```
+git fetch
+```
+
+**注意：git fetch 不会做的事情**
+
+他不会更新你的仓库的状态(`status`)和分支，也不会修改磁盘上的文，他只是将文件下载了下来.
+
+### 合并远程分支：
+
+```
+git merge o/master
+```
+
+### git pull
+
+```
+git pull =git fech +git merge o/master
+```
+
+当你想要 push 你的新提交时，发现远程仓库在你上次拉取以后已经又有了改变，也就是说你的新 commit 是基于旧提交的修改，这种情况下 Git 是不允许你进行 push 操作的，你需要使自己的工作基于远程的提交，这个过程可以用以下命令：
+
+* git fetch ;git merge o/master
+
+* 其实就是git pull -r(r就是rebase)
+
+  转载自：https://www.jianshu.com/p/b37ff443de15
