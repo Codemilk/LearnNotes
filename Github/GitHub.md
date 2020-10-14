@@ -81,13 +81,13 @@ git commit -m 	'描述'
 
 ### Git克隆操作
 
-#### 目的：
+#### 目的
 
 * 将远程仓库(github)对应的项目复制到本地
 
   
 
-#### 命令:
+#### 命令
 
 #####  1.克隆
 
@@ -102,8 +102,20 @@ git clone 仓库地址
 
 ```
 1.提交
-git push
+
+git add 'filename'      //提交到缓存区
+
+git status              //查看当前仓库状态
+
+git commit -m '操作描述' //提交到本地仓库
+
+git status              //查看当前仓库状态
+
+git push                //向远程仓库提交
+
 ```
+
+
 
 ## Git本地与远程仓库同步操作
 
@@ -136,3 +148,10 @@ git pull =git fech +git merge o/master
 * 其实就是git pull -r(r就是rebase)
 
   转载自：https://www.jianshu.com/p/b37ff443de15
+
+###  批量上传文件
+
+```
+git com . //.表示当前文件夹
+```
+
