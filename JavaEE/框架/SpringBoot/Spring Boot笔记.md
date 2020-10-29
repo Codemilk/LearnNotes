@@ -65,7 +65,7 @@ http://www.gulixueyuan.com/ 谷粒学院
 
 整合maven进来；
 
-![idea设置](images/搜狗截图20180129151045.png)
+![idea设置](https://raw.githubusercontent.com/Codemilk/LearnNotes/main/Pic/20201029151320.png)
 
 
 
@@ -1516,7 +1516,7 @@ localhost:8080/webjars/jquery/3.3.1/jquery.js
 
 
 
-2）、"/**" 访问当前项目的任何资源，都去（静态资源的文件夹）找映射
+ 
 
 ```
 "classpath:/META-INF/resources/", 
@@ -1843,7 +1843,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
        // super.addViewControllers(registry);
         //浏览器发送 /atguigu 请求来到 success
-        registry.addViewController("/atguigu").setViewName("success");
+        registry.addViewController("/atguigu").setViewName("");
     }
 }
 ```
@@ -1963,7 +1963,7 @@ public class MessageSourceAutoConfiguration {
 	 */
 	private String basename = "messages";  
     //我们的配置文件可以直接放在类路径下叫messages.properties；
-    
+    //也可以在全局配置文件配置指定路径
     @Bean
 	public MessageSource messageSource() {
 		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
@@ -1982,7 +1982,9 @@ public class MessageSourceAutoConfiguration {
 	}
 ```
 
+在全局配置文件配置指定路径
 
+![image-20201026223229012](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20201026223230856.png)
 
 3）、去页面获取国际化的值；
 
@@ -2031,7 +2033,9 @@ public class MessageSourceAutoConfiguration {
 
 效果：根据浏览器语言设置的信息切换了国际化；
 
+注意：你加入的是组件，所以你要加入到你的配置类下面
 
+![image-20201027182233553](https://raw.githubusercontent.com/Codemilk/LearnNotes/main/Pic/20201027182241.png)
 
 原理：
 
@@ -2039,6 +2043,7 @@ public class MessageSourceAutoConfiguration {
 
 ```java
 		@Bean
+        //@ConditionalOnMissingBean表示当容器里面不存在localeResolver，才会加载这个国际化加载器
 		@ConditionalOnMissingBean
 		@ConditionalOnProperty(prefix = "spring.mvc", name = "locale")
 		public LocaleResolver localeResolver() {
@@ -2052,6 +2057,8 @@ public class MessageSourceAutoConfiguration {
 		}
 默认的就是根据请求头带来的区域信息获取Locale进行国际化
 ```
+
+
 
 4）、点击链接切换国际化
 
@@ -2250,7 +2257,7 @@ insert的公共片段在div标签中
 <div th:replace="footer :: copy"></div>
 <div th:include="footer :: copy"></div>
 
-效果
+对应效果
 <div>
     <footer>
     &copy; 2011 The Good Thymes Virtual Grocery
@@ -2266,7 +2273,9 @@ insert的公共片段在div标签中
 </div>
 ```
 
+也可以使用选择器，但是子选择的id 在你插入的时候要写成~{模板名::#抽取的id}
 
+ ![image-20201028213024867](https://raw.githubusercontent.com/Codemilk/LearnNotes/main/Pic/20201028213026.png)
 
 引入片段的时候传入参数： 
 

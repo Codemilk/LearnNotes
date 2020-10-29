@@ -1,3 +1,7 @@
+---
+typora-root-url: ..\Pic
+---
+
 # GitHub
 
 ## 目的
